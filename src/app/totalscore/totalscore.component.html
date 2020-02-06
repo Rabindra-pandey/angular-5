@@ -1,0 +1,10 @@
+  <section id="totalscore">
+    <div class="container">
+      <h1>Total Score <br />{{progressbarscores.totcurrent}}</h1>
+      <div class="progressbar">
+        <div class="orange {{progressbarscores.totwidthdiffinpx <= 50 ? 'tooltip2' : ''}}" [style.width.%]="progressbarscores.tottargetwidth"><span class="tooltip {{progressbarscores.totwidthdiffinpx==0 ? 'hide' : ''}}">{{progressbarscores.tottarget}}</span><span class="gap">{{progressbarscores.totdiff > 0 ? '+'+progressbarscores.totdiff : ''}}</span></div>
+        <div class="blue" [style.width.%]="progressbarscores.totcurrentwidth"><span class="tooltip">{{progressbarscores.totcurrent}}</span></div>
+      </div>
+      <p class="para" [style.opacity]="1">{{progressbarscores.message}}</p>
+    </div>
+  </section>

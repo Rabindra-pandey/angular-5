@@ -1,0 +1,26 @@
+  <section id="quant_verbal_score">
+    <div class="container">
+      <div class="col-6">
+        <div class="indv_inner" id="quant_score">
+          <p class="sub-head-quant">Quant Score</p>
+          <h1>Q{{qvprogressbarscores.quantcurrentscore}}</h1>
+          <div class="progressbar">
+              <div class="orange {{qvprogressbarscores.quantwidthdiffinpx <= 50 ? 'tooltip2' : ''}}" [style.width.%]="qvprogressbarscores.quanttargetwidth"><span class="tooltip {{qvprogressbarscores.quantwidthdiffinpx==0 ? 'hide' : ''}}">Q{{qvprogressbarscores.quanttargetscore}}</span><span class="gap">{{qvprogressbarscores.quanttotdiff > 0 ? '+'+qvprogressbarscores.quanttotdiff : ''}}</span></div>
+              <div class="blue" [style.width.%]="qvprogressbarscores.quantcurrentwidth"><span class="tooltip">Q{{qvprogressbarscores.quantcurrentscore}}</span></div>
+          </div>
+          <p class="para" [style.opacity]="1">{{qvprogressbarscores.quantmessage}}</p>
+        </div>
+      </div>    
+      <div class="col-6">
+        <div class="indv_inner" id="verbal_score">
+          <p class="sub-head-verbal">Verbal Score</p>
+          <h1>Q{{qvprogressbarscores.verbalcurrentscore}}</h1>
+          <div class="progressbar">
+              <div class="orange {{qvprogressbarscores.verbalwidthdiffinpx <= 50 ? 'tooltip2' : ''}}" [style.width.%]="qvprogressbarscores.verbaltargetwidth"><span class="tooltip {{qvprogressbarscores.verbalwidthdiffinpx==0 ? 'hide' : ''}}">V{{qvprogressbarscores.verbaltargetscore}}</span><span class="gap">{{qvprogressbarscores.verbaltotdiff > 0 ? '+'+qvprogressbarscores.verbaltotdiff : ''}}</span></div>
+              <div class="blue" [style.width.%]="qvprogressbarscores.verbalcurrentwidth"><span class="tooltip">V{{qvprogressbarscores.verbalcurrentscore}}</span></div>
+          </div>
+          <p class="para" [style.opacity]="1">{{qvprogressbarscores.verbalmessage}}</p>
+        </div>
+      </div>   
+    </div>
+  </section>

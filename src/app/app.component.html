@@ -1,0 +1,53 @@
+
+  <header>
+    <div class="container">
+      <form [formGroup]="gmatFrm" (ngSubmit)="submitform()">
+        <div class="form-group col-6">
+          <h1 id="quant-head">Quant</h1>
+          <div class="form-control">
+            <label for="quant_current">Current</label>
+            <input type="text" id="quant_current" formControlName="quant_current" [ngClass]="isSubmitted && currentVal.quant_current=='' ? 'error' : ''" (change)="calculatedata()">
+
+            <div *ngFor="let validation of validation_messages.fieldname">
+              <p class="small" *ngIf="gmatFrm.get('quant_current').hasError(validation.type) && (gmatFrm.get('quant_current').dirty || gmatFrm.get('quant_current').touched)">{{validation.message}}</p>
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="quant_target">Target</label>
+            <input type="text" id="quant_target" formControlName="quant_target" [ngClass]="isSubmitted && currentVal.quant_target=='' ? 'error' : ''" (change)="calculatedata()">
+
+            <div *ngFor="let validation of validation_messages.fieldname">
+                <p class="small" *ngIf="gmatFrm.get('quant_target').hasError(validation.type) && (gmatFrm.get('quant_target').dirty || gmatFrm.get('quant_target').touched)">{{validation.message}}</p>
+              </div>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <h1 id="verbal-head">Verbal</h1>
+          <div class="form-control">
+            <label for="verbal_current">Current</label>
+            <input type="text" id="verbal_current" formControlName="verbal_current" [ngClass]="isSubmitted && currentVal.verbal_current=='' ? 'error' : ''" (change)="calculatedata()">
+
+            <div *ngFor="let validation of validation_messages.fieldname">
+                <p class="small" *ngIf="gmatFrm.get('verbal_current').hasError(validation.type) && (gmatFrm.get('verbal_current').dirty || gmatFrm.get('verbal_current').touched)">{{validation.message}}</p>
+              </div>
+          </div>
+          <div class="form-control">
+            <label for="verbal_target">Target</label>
+            <input type="text" id="verbal_target" formControlName="verbal_target" [ngClass]="isSubmitted && currentVal.verbal_target=='' ? 'error' : ''" (change)="calculatedata()">
+
+            <div *ngFor="let validation of validation_messages.fieldname">
+                <p class="small" *ngIf="gmatFrm.get('verbal_target').hasError(validation.type) && (gmatFrm.get('verbal_target').dirty || gmatFrm.get('verbal_target').touched)">{{validation.message}}</p>
+              </div>
+          </div>
+        </div>        
+        <div class="form-group col-12 text-center mtb-40">
+          <button type="submit" class="btn {{gmatFrm.invalid ? 'disabled' : ''}}" id="submit" name="submit" [disabled]="gmatFrm.invalid">Submit and Refresh</button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <app-totalscore *ngIf="isSubmitted && gmatFrm.status=='VALID' && totalCurrentScore && totalTargetScore" (emittedwidth)="progressWidth($event)" [progressbarscores]="progressbarTotalScore"></app-totalscore> 
+
+  <app-quantverbalscore *ngIf="isSubmitted && gmatFrm.status=='VALID'" (qemittedwidth)="qprogressWidth($event)" (vemittedwidth)="vprogressWidth($event)" [qvprogressbarscores]="progressbarQuantAndVarbal"></app-quantverbalscore>
+  
